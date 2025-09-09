@@ -7,7 +7,8 @@ import {
   Shield, 
   HelpCircle,
   Menu,
-  X
+  X,
+  Gamepad2
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -23,6 +24,7 @@ const menuItems = [
   { id: 'dashboard', icon: LayoutDashboard, key: 'dashboard' },
   { id: 'wallet', icon: Wallet, key: 'wallet' },
   { id: 'transactions', icon: Receipt, key: 'transactions' },
+  { id: 'city-game', icon: Gamepad2, key: 'cityGame', isExternal: true },
   { id: 'admin', icon: Shield, key: 'adminPanel' },
   { id: 'settings', icon: Settings, key: 'settings' },
   { id: 'help', icon: HelpCircle, key: 'helpSupport' },
@@ -88,8 +90,12 @@ const Sidebar: React.FC<SidebarProps> = ({
               <button
                 key={item.id}
                 onClick={() => {
-                  setActiveSection(item.id);
-                  setIsOpen(false);
+                  if (item.isExternal) {
+                    window.open('/city-game', '_blank');
+                  } else {
+                    setActiveSection(item.id);
+                    setIsOpen(false);
+                  }
                 }}
                 className={`
                   w-full flex items-center space-x-3 p-3 rounded-xl
@@ -101,6 +107,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <span className={`font-medium ${isActive ? 'text-primary-foreground' : 'text-foreground'}`}>
                   {t(item.key)}
                 </span>
+                {item.isExternal && (
+                  <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full ml-auto">
+                    NEW
+                  </span>
+                )}
               </button>
             );
           })}

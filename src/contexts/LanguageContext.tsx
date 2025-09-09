@@ -20,6 +20,7 @@ const translations: Translations = {
     settings: 'Settings',
     adminPanel: 'Admin Panel',
     helpSupport: 'Help & Support',
+    cityGame: 'GTA City',
     
     // Dashboard
     totalBalance: 'Total Balance',
@@ -62,6 +63,7 @@ const translations: Translations = {
     settings: 'Sozlamalar',
     adminPanel: 'Admin Panel',
     helpSupport: 'Yordam va Qo\'llab-quvvatlash',
+    cityGame: 'GTA Shahar',
     
     // Dashboard
     totalBalance: 'Umumiy Balans',
